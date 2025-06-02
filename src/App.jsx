@@ -18,7 +18,6 @@ import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 
 // Public Pages
-import Landing from "./pages/Landing";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import ForgotPassword from "./components/auth/ForgotPassword";
@@ -33,7 +32,7 @@ import Settings from "./pages/AdminPages/Settings";
 import UserLogPage from "./pages/AdminPages/UserLogPage";
 
 // User Pages
-import UserDashboard from "./pages/UserPages/Dashboard";
+import UserDashboard from "./pages/UserPages/UserDashboard";
 import UserPage from "./pages/UserPages/UserPage";
 import NotificationsPage from "./pages/UserPages/NotificationsPage";
 import CalendarPage from "./pages/UserPages/CalendarPage";
@@ -101,7 +100,7 @@ function App() {
             <main className="flex-grow">
               <Routes>
                 {/* Public Routes */}
-                <Route path="/" element={<Landing />} />
+                <Route path="/" element={<Login />} /> {/* I MODIFIED HERE */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
