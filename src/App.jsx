@@ -68,7 +68,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
   
-  // If role is required, check if user has the rol
+  // If role is required, check if user has the role
   if (requiredRole) {
     const hasRequiredRole = hasRole(requiredRole);
     
