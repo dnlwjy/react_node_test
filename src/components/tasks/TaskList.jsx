@@ -17,11 +17,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { FaCheck, FaEdit, FaSpinner, FaExclamationTriangle, FaCalendarAlt, FaFlag } from 'react-icons/fa';
+import TaskFilter from './TaskFilter';
 
 const TaskList = () => {
   // State management with proper initialization
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
+  const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
@@ -125,6 +127,19 @@ const TaskList = () => {
       window.removeEventListener('storage', handleStorageChange);
     };
   }, []);
+
+  // NEW useEffect for filtering based on `tasks` and `filter`
+useEffect(() => {
+  if (filter === 'all') {
+    setFilteredTasks(tasks);
+  } else {
+    setFilteredTasks(
+      tasks.filter(task =>
+        filter === 'complete' ? task.status === 'complete' : task.status === 'incomplete'
+      )
+    );
+  }
+}, [tasks, filter]);
 
   /**
    * Toggle task completion status
@@ -310,6 +325,8 @@ const TaskList = () => {
     <div className="bg-white p-4 rounded-lg shadow max-h-96 overflow-y-auto">
       <h3 className="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">Your Tasks</h3>
       
+      <TaskFilter filter={filter} setFilter={setFilter} />
+
       <ul className="space-y-3" aria-label="Task list">
         {filteredTasks.map((task) => (
           <li key={task._id} className="border-b pb-3">

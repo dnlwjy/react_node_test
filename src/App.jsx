@@ -32,6 +32,7 @@ import Settings from "./pages/AdminPages/Settings";
 import UserLogPage from "./pages/AdminPages/UserLogPage";
 
 // User Pages
+import Landing from "./pages/Landing";
 import UserDashboard from "./pages/UserPages/UserDashboard";
 import UserPage from "./pages/UserPages/UserPage";
 import NotificationsPage from "./pages/UserPages/NotificationsPage";
@@ -100,7 +101,8 @@ function App() {
             <main className="flex-grow">
               <Routes>
                 {/* Public Routes */}
-                <Route path="/" element={<Login />} /> {/* I MODIFIED HERE */}
+                <Route path="/" element={<Login />} /> {/* I ADDED HERE */}
+                <Route path="/landing" element={<Landing />} /> {/* I ADDED HERE */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />

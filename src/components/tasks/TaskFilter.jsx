@@ -19,7 +19,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaSearch, FaFilter, FaSpinner, FaExclamationTriangle, FaTasks } from 'react-icons/fa';
 
-const TaskFilter = () => {
+const TaskFilter = ({ filter, setFilter }) => {
   // State management with proper initialization
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
@@ -177,8 +177,8 @@ const TaskFilter = () => {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+    <div className="bg-white p-4 rounded-lg shadow">
+      <h2 className="text-lg font-bold mb-6 text-gray-800 flex items-center">
         <FaTasks className="mr-2" aria-hidden="true" />
         Task Filter
       </h2>
