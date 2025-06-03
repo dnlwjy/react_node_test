@@ -57,20 +57,26 @@ import NotificationProvider from "./contexts/NotificationContext";
  * @param {string} [props.requiredRole] - Optional role required to access the route
  */
 const ProtectedRoute = ({ children, requiredRole }) => {
+  const { user, hasRole } = useAuth();
+  const location = useLocation();
   
   // Check if user is authenticated
-  const isAuthenticated = true;
+  const isAuthenticated = !!user || !!localStorage.getItem("token");
   
   // If not authenticated, redirect to login
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
   
   // If role is required, check if user has the role
   if (requiredRole) {
-    const userRole = localStorage.getItem("userRole") || "admin"; // paksa admin
-    if (userRole !== requiredRole) {
+    const hasRequiredRole = hasRole(requiredRole);
+    
+    if (!hasRequiredRole) {
+      // Redirect to appropriate dashboard based on user's role
+      const userRole = localStorage.getItem("userRole");
       const redirectPath = userRole === "admin" ? "/admin/dashboard" : "/user/dashboard";
+      
       return <Navigate to={redirectPath} replace />;
     }
   }
