@@ -29,6 +29,12 @@ const RecentUsers = () => {
               <th className="p-2 text-left border border-gray-200">Name</th>
               <th className="p-2 text-left border border-gray-200">Email</th>
               <th className="p-2 text-left border border-gray-200">Date</th>
+              <th className="p-2 text-left border border-gray-200">login time</th>
+              <th className="p-2 text-left border border-gray-200">logout time</th>
+              <th className="p-2 text-left border border-gray-200">JWT token name</th>
+              <th className="p-2 text-left border border-gray-200">user name</th>
+              <th className="p-2 text-left border border-gray-200">role</th>
+              <th className="p-2 text-left border border-gray-200">ip address</th>
             </tr>
           </thead>
 
@@ -39,6 +45,12 @@ const RecentUsers = () => {
                 <td className="p-2 border border-gray-200">{user.fullName}</td>
                 <td className="p-2 border border-gray-200">{user.email}</td>
                 <td className="p-2 border border-gray-200">{formatDate(user.createdAt)}</td>
+                <td className="p-2 border border-gray-200">{formatDate(user.loginTime)}</td>
+                <td className="p-2 border border-gray-200">{formatDate(user.logoutTime)}</td>
+                <td className="p-2 border border-gray-200">{user.jwtTokenName}</td>
+                <td className="p-2 border border-gray-200">{user.userName}</td>
+                <td className="p-2 border border-gray-200">{user.role}</td>
+                <td className="p-2 border border-gray-200">{user.ipAddress}</td>
               </tr>
             ))}
           </tbody>
